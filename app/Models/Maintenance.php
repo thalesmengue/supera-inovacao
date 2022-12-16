@@ -14,6 +14,6 @@ class Maintenance extends Model
         'date',
         'description',
         'user_id',
-        'car_id'
+        'vehicle_id'
         ];
 }
