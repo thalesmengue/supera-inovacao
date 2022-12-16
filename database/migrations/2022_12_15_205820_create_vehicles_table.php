@@ -16,7 +16,7 @@ return new class extends Migration
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(User::class);
+            $table->foreignIdFor(User::class);
             $table->string('owner');
             $table->string('brand');
             $table->string('model');
