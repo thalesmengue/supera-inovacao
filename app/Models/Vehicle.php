@@ -20,13 +20,13 @@ class Vehicle extends Model
         'user_id'
     ];
 
-    public function maintenances(): HasMany
-    {
-        return $this->hasMany(Maintenance::class);
-    }
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function maintenances(): HasMany
+    {
+        return $this->hasMany(Maintenance::class);
     }
 }
