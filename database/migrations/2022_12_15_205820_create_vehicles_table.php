@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('brand');
             $table->string('model');
             $table->string('version');
-            $table->string('plate');
+            $table->string('plate')->unique();
             $table->timestamps();
         });
     }
