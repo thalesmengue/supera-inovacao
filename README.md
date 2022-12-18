@@ -1,66 +1,105 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Desafio aplicação de cadastro de veículos e manutenção
+O desafio consiste na construção de uma aplicação para o cadastro de veículos, com a possibilidade do usuário cadastrado agendar 
+manutenções para o veículo cadastrado.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Estrutura de dados
 
-## About Laravel
+O veículo aceita o nome do proprietário, uma marca, um modelo, o ano do modelo e uma placa[para individualizar para veículo]. A manutenção aceita um veículo cadastrado, uma data[dia e hora], uma descrição
+do serviço a ser realizado e o status da manutenção.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## A resolução
+Para a criação da aplicação, foram utilizados diversos recursos oferecidos pelo Laravel, como as migrations, as policies,
+os form requests validators, para assim, chegar ao resultado esperado.
+<br>
+Os requests validators foram utilizados para validar os campos de criação e edição de veículos, assim como para
+os campos de criação e edição de manutenções.
+<br>
+Para individualizar o cadastro de cada veículo, utilizado como critério a placa do veículo, que é um campo disponível para o usuário
+quando vai criar um novo registro de veículo, para tanto, definido o campo como `unique` na vehicle migration.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Rotas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Home rotas
 
-## Learning Laravel
+| Método HTTP | Endpoint  | Descrição                                                |
+|-------------|-----------|----------------------------------------------------------|
+| GET         | `/`       | Retorna as manutenções agendadas para os próximos 7 dias |
+| GET         | `/logout` | Desloga o usuário autenticado                            |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Rotas de veículos
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+| Method HTTP | Endpoint              | Description                                              |
+|-------------|-----------------------|----------------------------------------------------------|
+| GET         | `/vehicles`           | Retorna os veículos cadastrados pelo usuário autenticado |
+| GET         | `/vehicles/{id}`      | Retorna os dados de determinado veículo                  |
+| GET         | `/vehicles/create`    | Retorna a view de cadastro de veículos                   |
+| POST        | `/vehicles/`          | Cadastra um novo veículo                                 |
+| POST        | `/vehicles/{id}/edit` | Retorna a view de edição de determinado veículo          |
+| PATCH       | `/vehicles/{id}`      | Edita um determinado veículo                             |
+| DELETE      | `/vehicles/{id}`      | Deleta um determinado veículo                            |
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Rotas de manutenções
 
-## Laravel Sponsors
+| Method HTTP | Endpoint                  | Description                                                 |
+|-------------|---------------------------|-------------------------------------------------------------|
+| GET         | `/maintenances`           | Retorna as manutenções cadastradas pelo usuário autenticado |
+| GET         | `/maintenances/{id}`      | Retorna os dados de uma determinada manutenção              |
+| GET         | `/maintenances/create`    | Retorna a view para a criação de uma manutenção             |
+| POST        | `/maintenances/`          | Cadastra uma nova manutenção                                |
+| POST        | `/maintenances/{id}/edit` | Retorna a view de edição de determinada manutenção          |
+| PATCH       | `/maintenances/{id}`      | Edita uma determinada manutenção                            |
+| DELETE      | `/maintenances/{id}`      | Deleta uma determinada manutenção                           |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Rodando o projeto
+```
+# clone o repositório
+$ git clone git@github.com:thalesmengue/supera-inovacao.git
 
-## Contributing
+# instale as dependências do projeto
+$ composer install
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# copie o arquivo .env do projeto
+$ cp .env.example .env
 
-## Code of Conduct
+# configure o arquivo .env com as credenciais do seu banco de dados
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# gere a chave da aplicação
+$ php artisan key:generate
 
-## Security Vulnerabilities
+# rode as migrations
+$ php artisan migrate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# popule os dados iniciais
+$ php artisan db:seed --class=StatusSeeder
+$ php artisan db:seed --class=UserSeeder
+$ php artisan db:seed --class=VehicleSeeder
+$ php artisan db:seed --class=MaintenanceSeeder
 
-## License
+# instale os pacotes do node
+$ npm install
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# compile os assets
+$ npm run build
+
+# inicie o servidor
+$ php artisan serve
+```
+
+Com todos os comandos anteriores realizados, o projeto deve estar pronto para utilização, e um
+usuário com e-mail `admin@test.com` e senha `password` foi criado para o teste do sistema.
+<br>
+A atualização do status da manutenção deve ser feita de forma manual, por meio da edição, ou por meio da execução do
+comando `php artisan update:maintenance-status`, que verifica se a data da atualização é igual a data da execução do comando
+ou se é anterior a execução do comando e altera o status da manutenção para `Completed`.
+<br>
+A execução do comando poderia ser configurado na schedule do Laravel, para que seja executado diariamente, por exemplo, mas
+para tanto, é necessário a configuração de um cron job no servidor, que não foi feita para o teste do sistema. Caso desejem, podem realizar,
+visto que deixei pronto o comando para a execução no schedule.
+
+## Technologies
+
+- [PHP 8.0.2](https://www.php.net/docs.php)
+- [Laravel 9.19](https://laravel.com/docs/9.x/installation)
+- [TailwindCSS 3.1.0](https://tailwindcss.com/docs/installation)

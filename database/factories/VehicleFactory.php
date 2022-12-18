@@ -18,12 +18,7 @@ class VehicleFactory extends Factory
     public function definition()
     {
         return [
-            'owner' => fake()->name,
-            'brand' => fake()->name,
-            'model' => fake()->name,
-            'version' => fake()->name,
-            'plate' => fake()->name,
-            'user_id' => '1',
+
         ];
     }
 }

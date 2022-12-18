@@ -17,6 +17,7 @@ class HomeController extends Controller
         $maintenances = Maintenance::query()
             ->where('user_id', auth()->id())
             ->whereBetween('date', [$startDate, $endDate])
+            ->orderBy('date')
             ->get();
 
         return view('index', ['maintenances' => $maintenances]);

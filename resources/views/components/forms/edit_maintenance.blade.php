@@ -23,7 +23,8 @@
                 </div>
                 <div class="mt-4">
                     <label class="block" for="date">Date<label>
-                            <input type="date" placeholder="date" name="date" id="date" value="{{ $maintenance->date->format('d/m/Y') }}"
+                            <input type="datetime-local" placeholder="date" name="date" id="date"
+                                   value="{{ $maintenance->date->format('d/m/Y') }}"
                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                             @if($errors->has("date"))
                                 <div class="text-center text-base text-red-600">
@@ -33,7 +34,8 @@
                 </div>
                 <div class="mt-4">
                     <label class="block" for="description">Description<label>
-                            <input type="text" placeholder="description" name="description" value="{{ $maintenance->description }}"
+                            <input type="text" placeholder="description" name="description"
+                                   value="{{ $maintenance->description }}"
                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                             @if($errors->has("description"))
                                 <div class="text-center text-base text-red-600">
@@ -46,7 +48,7 @@
                             <select name="statuses" id="statuses"
                                     class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                                 @foreach($statuses as $status)
-                                    <option value="{{$status->id}}">{{$status->status}}
+                                    <option value="{{$status->id}}">{{$status->status}} 
                                     </option>
                                 @endforeach
                             </select>

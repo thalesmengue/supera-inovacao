@@ -20,7 +20,10 @@ class MaintenanceController extends Controller
 
     public function index(): View
     {
-        $maintenances = Maintenance::query()->where('user_id', auth()->id())->get();
+        $maintenances = Maintenance::query()
+            ->where('user_id', auth()->id())
+            ->orderBy('date')
+            ->get();
 
         return view('maintenances.index', ['maintenances' => $maintenances]);
     }
