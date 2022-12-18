@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('owner');
             $table->string('brand');
             $table->string('model');
+            $table->integer('model_year');
             $table->string('version');
             $table->string('plate')->unique();
             $table->timestamps();

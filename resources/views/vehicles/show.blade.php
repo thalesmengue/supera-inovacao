@@ -46,6 +46,14 @@
                         </div>
                         <div class="mb-2 text-blueGray-600 mt-6 flex gap-1.5">
                             <div>
+                                <p class="font-bold">Model Year: </p>
+                            </div>
+                            <div>
+                                <p class="mr-2">{{$vehicle->model_year}}</p>
+                            </div>
+                        </div>
+                        <div class="mb-2 text-blueGray-600 mt-6 flex gap-1.5">
+                            <div>
                                 <p class="font-bold">Version: </p>
                             </div>
                             <div>

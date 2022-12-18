@@ -20,6 +20,7 @@ class VehicleSeeder extends Seeder
             'owner' => fake()->name,
             'brand' => fake()->name,
             'model' => fake()->name,
+            'model_year' => fake()->numberBetween(2000, 2022),
             'version' => fake()->name,
             'plate' => fake()->name,
             'user_id' => '1',

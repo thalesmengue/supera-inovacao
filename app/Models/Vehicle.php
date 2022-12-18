@@ -9,16 +9,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Vehicle extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'owner',
         'brand',
         'model',
+        'model_year',
         'version',
         'plate',
         'user_id'
     ];
+
+    use HasFactory;
 
     public function user(): BelongsTo
     {

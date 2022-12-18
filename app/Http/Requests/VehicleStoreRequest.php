@@ -27,7 +27,8 @@ class VehicleStoreRequest extends FormRequest
             'owner' => ['required', 'string', 'min:3', 'max:100'],
             'brand' => ['required', 'string', 'min:2', 'max:28'],
             'model' => ['required', 'string', 'min:2', 'max:28'],
-            'version' => ['required', 'string', 'min:2', 'max:28'],
+            'model_year' => ['required', 'integer', 'min_digits:4', 'max_digits:4'],
+            'version' => ['required', 'string', 'min:2', 'max:32'],
             'plate' => ['required', 'string', 'min:7', 'max:7', 'unique:vehicles,plate'],
         ];
     }
@@ -49,6 +50,11 @@ class VehicleStoreRequest extends FormRequest
             'model.string' => 'The model field must be a string',
             'model.min' => 'The model field must have at least 2 characters',
             'model.max' => 'The model field must have at most 28 characters',
+
+            'model_year.required' => 'The model year field must be filled',
+            'model_year.integer' => 'The model year field must be an integer',
+            'model_year.min' => 'The model year field must have at least 4 characters',
+            'model_year.max' => 'The model year field must have at most 4 characters',
 
             'version.required' => 'The version field must be filled',
             'version.string' => 'The version field must be a string',

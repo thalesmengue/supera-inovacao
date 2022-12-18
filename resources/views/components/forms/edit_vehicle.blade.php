@@ -6,8 +6,8 @@
             @csrf
             <div class="mt-4">
                 <div>
-                    <label class="block" for="Name">Owner<label>
-                            <input type="text" placeholder="owner" name="owner" value="{{$vehicle->owner}}"
+                    <label class="block" for="owner">Owner<label>
+                            <input type="text" placeholder="owner" name="owner" value="{{$vehicle->owner}}" id="owner"
                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                             @if($errors->has("owner"))
                                 <div class="text-center text-base text-red-600">
@@ -16,8 +16,8 @@
                     @endif
                 </div>
                 <div class="mt-4">
-                    <label class="block" for="email">Brand<label>
-                            <input type="text" placeholder="brand" name="brand" value="{{$vehicle->brand}}"
+                    <label class="block" for="brand">Brand<label>
+                            <input type="text" placeholder="brand" name="brand" value="{{$vehicle->brand}}" id="brand"
                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                             @if($errors->has("brand"))
                                 <div class="text-center text-base text-red-600">
@@ -26,8 +26,8 @@
                     @endif
                 </div>
                 <div class="mt-4">
-                    <label class="block" for="email">Model<label>
-                            <input type="text" placeholder="model" name="model" value="{{$vehicle->model}}"
+                    <label class="block" for="model">Model<label>
+                            <input type="text" placeholder="model" name="model" value="{{$vehicle->model}}" id="model"
                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                             @if($errors->has("model"))
                                 <div class="text-center text-base text-red-600">
@@ -36,8 +36,18 @@
                     @endif
                 </div>
                 <div class="mt-4">
-                    <label class="block" for="email">Version<label>
-                            <input type="text" placeholder="version" name="version" value="{{$vehicle->version}}"
+                    <label class="block" for="model">Model Year<label>
+                            <input type="text" placeholder="model year" name="model_year" value="{{$vehicle->model_year}}" id="model_year"
+                                   class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
+                            @if($errors->has("model_year"))
+                                <div class="text-center text-base text-red-600">
+                                    {{ $errors->first("model_year") }}
+                                </div>
+                    @endif
+                </div>
+                <div class="mt-4">
+                    <label class="block" for="version">Version<label>
+                            <input type="text" placeholder="version" name="version" value="{{$vehicle->version}}" id="version"
                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                             @if($errors->has("version"))
                                 <div class="text-center text-base text-red-600">
@@ -46,8 +56,8 @@
                     @endif
                 </div>
                 <div class="mt-4">
-                    <label class="block" for="email">Registration Plate<label>
-                            <input type="text" placeholder="plate" name="plate" value="{{$vehicle->plate}}"
+                    <label class="block" for="plate">Registration Plate<label>
+                            <input type="text" placeholder="plate" name="plate" value="{{$vehicle->plate}}" id="plate"
                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                             @if($errors->has("plate"))
                                 <div class="text-center text-base text-red-600">
