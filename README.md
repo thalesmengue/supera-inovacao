@@ -1,4 +1,4 @@
-# Desafio aplicação de cadastro de veículos e manutenção
+# Desafio aplicação de cadastro de veículos e manutenções
 O desafio consiste na construção de uma aplicação para o cadastro de veículos, com a possibilidade do usuário cadastrado agendar 
 manutenções para o veículo cadastrado.
 
