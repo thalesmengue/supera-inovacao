@@ -20,7 +20,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Status::class);
-            $table->foreignIdFor(Vehicle::class);
+            $table->foreignId('vehicle_id')->constrained('vehicles')->cascadeOnDelete();
             $table->string('description');
             $table->dateTime('date');
             $table->timestamps();
