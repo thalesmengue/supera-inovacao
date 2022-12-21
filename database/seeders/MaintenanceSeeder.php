@@ -16,28 +16,6 @@ class MaintenanceSeeder extends Seeder
      */
     public function run()
     {
-        Maintenance::factory()->create([
-            'user_id' => 1,
-            'status_id' => 1,
-            'vehicle_id' => 1,
-            'date' => Carbon::now()->addDays(3),
-            'description' => 'Test Maintenance',
-        ]);
-
-        Maintenance::factory()->create([
-            'user_id' => 1,
-            'status_id' => 1,
-            'vehicle_id' => 1,
-            'date' => Carbon::now()->addDays(3),
-            'description' => 'Test Maintenance',
-        ]);
-
-        Maintenance::factory()->create([
-            'user_id' => 1,
-            'status_id' => 1,
-            'vehicle_id' => 1,
-            'date' => Carbon::now()->addDays(3),
-            'description' => 'Test Maintenance',
-        ]);
+        Maintenance::factory(3)->create();
     }
 }
