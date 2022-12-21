@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Unique;
 
 class VehicleUpdateRequest extends FormRequest
 {
@@ -30,11 +32,11 @@ class VehicleUpdateRequest extends FormRequest
             'model' => ['required', 'string', 'min:2', 'max:28'],
             'model_year' => ['required', 'integer', 'min_digits:4', 'max_digits:4'],
             'version' => ['required', 'string', 'min:2', 'max:32'],
-            'plate' => ['required', 'string', 'min:7', 'max:7', 'unique:vehicles,plate', auth()->id()],
+            'plate' => ['required', 'string', 'min:7', 'max:7', Rule::unique('vehicles', 'plate')->ignore($this->vehicle)],
         ];
     }
 
-    public function messages(): array
+    public function messages()
     {
         return [
             'owner.required' => 'The owner field must be filled',
@@ -66,8 +68,7 @@ class VehicleUpdateRequest extends FormRequest
             'plate.string' => 'The plate field must be a string',
             'plate.min' => 'The plate field must have at least 7 characters',
             'plate.max' => 'The plate field must have at most 7 characters',
-            'plate.unique' => 'The plate field must be unique',
-            'plate.exists' => 'The plate field must exist',
+            'plate.unique' => 'This plate is already registered',
         ];
     }
 }
