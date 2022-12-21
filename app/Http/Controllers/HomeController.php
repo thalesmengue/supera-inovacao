@@ -23,9 +23,13 @@ class HomeController extends Controller
         return view('index', ['maintenances' => $maintenances]);
     }
 
-    public function logout(): RedirectResponse
+    public function logout(Request $request): RedirectResponse
     {
         auth()->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
 
         return redirect()->to('/');
     }
