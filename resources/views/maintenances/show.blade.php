@@ -73,12 +73,12 @@
                                 Maintenance informations
                             </p>
                         </div>
-                        <div class="mb-2 text-blueGray-600 mt-6 flex gap-1.5">
+                        <div class="mb-2 text-blueGray-600 mt-6 flex gap-1.5 break-normal">
                             <div>
                                 <p class="font-bold">Description: </p>
                             </div>
                             <div>
-                                <p class="mr-2">{{$maintenance->description}}</p>
+                                <p class="mr-2 break-words">{{$maintenance->description}}</p>
                             </div>
                         </div>
                         <div class="mb-2 text-blueGray-600 mt-6 flex gap-1.5">
@@ -86,7 +86,7 @@
                                 <p class="font-bold">Date: </p>
                             </div>
                             <div>
-                                <p class="mr-2">{{$maintenance->date->format('m/d/Y')}}</p>
+                                <p class="mr-2">{{$maintenance->date->format('m/d/Y - H:i')}}</p>
                             </div>
                         </div>
                         <div class="mb-2 text-blueGray-600 mt-6 flex gap-1.5">

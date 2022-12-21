@@ -25,9 +25,6 @@
                             <thead class="bg-gray-50">
                             <tr>
                                 <th scope="col"
-                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">ID
-                                </th>
-                                <th scope="col"
                                     class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Owner
                                 </th>
                                 <th scope="col"
@@ -37,10 +34,12 @@
                                     class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Model
                                 </th>
                                 <th scope="col"
-                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Version
+                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                    Version
                                 </th>
                                 <th scope="col"
-                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Registration Plate
+                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                    Registration Plate
                                 </th>
                                 <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                                     <span class="sr-only">Edit</span>
@@ -51,17 +50,22 @@
                             @isset($vehicles)
                                 @foreach($vehicles as $vehicle)
                                     <tr>
-                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"> {{ $vehicle->id }} </td>
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> {{ $vehicle->owner }}</td>
                                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"> {{ $vehicle->brand }} </td>
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> {{ $vehicle->model }}</td>
                                         <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"> {{ $vehicle->version }} </td>
                                         <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> {{ $vehicle->plate }}</td>
-                                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                                            <a href="{{route('vehicles.show', $vehicle->id)}}"
-                                               class="text-indigo-600 hover:text-indigo-900">Show</a>
-                                            <a href="{{route('vehicles.destroy', $vehicle->id)}}"
-                                               class="text-red-600 hover:text-red-900 ml-6">Delete</a>
+                                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-semibold sm:pr-6">
+                                            <form method="post"
+                                                  action="{{ route("vehicles.destroy", $vehicle->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a href="{{ route('vehicles.show', $vehicle->id) }}"
+                                                   class="text-indigo-600 hover:text-indigo-900">Show</a>
+                                                <button type="submit"
+                                                        class="text-red-600 hover:text-red-900 ml-6">Delete
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
