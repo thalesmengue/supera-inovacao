@@ -20,8 +20,8 @@ class MaintenanceFactory extends Factory
         return [
             'user_id' => 1,
             'status_id' => 1,
-            'vehicle_id' => 8,
-            'date' => Carbon::now()->addDays(rand(1, 7)),
+            'vehicle_id' => rand(1, 25),
+            'date' => Carbon::now()->addDays(rand(1, 12)),
             'description' => 'Test Maintenance',
         ];
     }

@@ -2,11 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Vehicle;
+use Faker\Provider\Fakecar;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Vehicle>
+ * @extends Factory<Vehicle>
  */
 class VehicleFactory extends Factory
 {
@@ -17,13 +19,16 @@ class VehicleFactory extends Factory
      */
     public function definition()
     {
+        $faker = (new \Faker\Factory())::create();
+        $faker->addProvider(new Fakecar($faker));
+
         return [
             'owner' => fake()->firstName(),
-            'brand' => fake()->company(),
-            'model' => fake()->word,
+            'brand' => $faker->vehicleBrand,
+            'model' => $faker->vehicleModel,
             'model_year' => fake()->numberBetween(2000, 2022),
-            'version' => fake()->word,
-            'plate' => fake()->randomNumber(7),
+            'version' => '1.0 Hatch',
+            'plate' => $faker->vehicleRegistration,
             'user_id' => '1',
         ];
     }

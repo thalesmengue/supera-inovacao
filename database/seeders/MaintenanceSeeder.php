@@ -16,6 +16,6 @@ class MaintenanceSeeder extends Seeder
      */
     public function run()
     {
-        Maintenance::factory(3)->create();
+        Maintenance::factory(50)->create();
     }
 }
