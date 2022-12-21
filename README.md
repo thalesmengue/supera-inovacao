@@ -16,6 +16,10 @@ os campos de criação e edição de manutenções.
 <br>
 Para individualizar o cadastro de cada veículo, utilizado como critério a placa do veículo, que é um campo disponível para o usuário
 quando vai criar um novo registro de veículo, para tanto, definido o campo como `unique` na vehicle migration.
+<br>
+O status da manutenção, foi criado como uma forma do usuário ter um controle mais claro se a manutenção já foi completa, assim, 
+ele pode escolher entre a opção `scheduled` ou `completed`, podendo mudar o status da aplicação manualmente, ou rodar o comando que
+é explicado abaixo, após a instalação do projeto.
 
 ## Rotas
 
@@ -92,7 +96,7 @@ usuário com e-mail `admin@test.com` e senha `password` foi criado para o teste 
 <br>
 A atualização do status da manutenção deve ser feita de forma manual, por meio da edição, ou por meio da execução do
 comando `php artisan update:maintenance-status`, que verifica se a data da atualização é igual a data da execução do comando
-ou se é anterior a execução do comando e altera o status da manutenção para `Completed`.
+ou se é anterior a execução do comando e altera o status da manutenção para `Completed` caso a data da manutenção de match com os requisitos informados.
 <br>
 A execução do comando poderia ser configurado na schedule do Laravel, para que seja executado diariamente, por exemplo, mas
 para tanto, é necessário a configuração de um cron job no servidor, que não foi feita para o teste do sistema. Caso desejem, podem realizar,
