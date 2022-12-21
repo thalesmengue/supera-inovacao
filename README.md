@@ -4,7 +4,7 @@ manutenções para o veículo cadastrado.
 
 ## Estrutura de dados
 
-O veículo aceita o nome do proprietário, uma marca, um modelo, o ano do modelo e uma placa[para individualizar para veículo]. A manutenção aceita um veículo cadastrado, uma data[dia e hora], uma descrição
+O veículo aceita o nome do proprietário, uma marca, um modelo, o ano do modelo, uma versão, e uma placa[para individualizar para veículo]. A manutenção aceita um veículo cadastrado, uma data[dia e hora], uma descrição
 do serviço a ser realizado e o status da manutenção.
 
 ## A resolução
@@ -100,9 +100,13 @@ visto que deixei pronto o comando para a execução no schedule.
 <br> 
 A parte da autenticação do sistema foi feita pelo Breeze, um dos starter kits do Laravel que fornecem uma série de benefícios,
 dentre um deles, o de ter um sistema de autenticação pronto para uso.
+<br>
+Para uma população de veículos mais próxima da realidade, utilizada uma lib alternativa, que é a Laravel
+Fake Car que fornece um provider para a geração de dados falsos de veículos.
 
-## Technologies
+## Referências
 
 - [PHP 8.0.2](https://www.php.net/docs.php)
 - [Laravel 9.19](https://laravel.com/docs/9.x/installation)
 - [TailwindCSS 3.1.0](https://tailwindcss.com/docs/installation)
+- [Laravel Fake Car](https://github.com/pelmered/fake-car)
