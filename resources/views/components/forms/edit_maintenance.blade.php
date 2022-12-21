@@ -3,6 +3,7 @@
     <div class="px-8 py-6 mx-4 mt-4 text-left bg-white shadow-lg md:w-1/3 lg:w-1/3 sm:w-1/3">
         <h3 class="text-2xl font-bold text-center">Edit a maintenance already scheduled</h3>
         <form action="{{route('maintenances.update', $maintenance->id)}}" method="post">
+            @method('PATCH')
             @csrf
             <div class="mt-4">
                 <div>
@@ -10,7 +11,7 @@
                             <select name="vehicle_id" id="vehicle_id"
                                     class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                                 @foreach($vehicles as $vehicle)
-                                    <option value="{{$vehicle->id}}">{{$vehicle->brand}} - {{$vehicle->model}}
+                                    <option value="{{$vehicle->id}}" {{$maintenance->vehicle_id == $vehicle->id ? 'selected' : ''}}>{{$vehicle->brand}} - {{$vehicle->model}}
                                         - {{$vehicle->plate}}
                                     </option>
                                 @endforeach
@@ -24,7 +25,7 @@
                 <div class="mt-4">
                     <label class="block" for="date">Date<label>
                             <input type="datetime-local" placeholder="date" name="date" id="date"
-                                   value="{{ $maintenance->date->format('d/m/Y') }}"
+                                   value="{{ $maintenance->date->format('Y-m-d\TH:i:s') }}"
                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                             @if($errors->has("date"))
                                 <div class="text-center text-base text-red-600">
@@ -48,7 +49,7 @@
                             <select name="statuses" id="statuses"
                                     class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                                 @foreach($statuses as $status)
-                                    <option value="{{$status->id}}">{{$status->status}} 
+                                    <option value="{{$status->id}}" {{$maintenance->status_id == $status->id ? 'selected' : ''}}>  {{$status->status}}
                                     </option>
                                 @endforeach
                             </select>
