@@ -20,7 +20,7 @@ class Maintenance extends Model
     ];
 
     protected $dates = [
-      'date'
+        'date'
     ];
 
     public function vehicle(): BelongsTo
@@ -31,5 +31,10 @@ class Maintenance extends Model
     public function status(): HasOne
     {
         return $this->hasOne(Status::class);
+    }
+
+    public function halfString(): string
+    {
+        return substr($this->description, 0, 50);
     }
 }
