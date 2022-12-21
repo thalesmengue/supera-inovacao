@@ -97,6 +97,9 @@ ou se é anterior a execução do comando e altera o status da manutenção para
 A execução do comando poderia ser configurado na schedule do Laravel, para que seja executado diariamente, por exemplo, mas
 para tanto, é necessário a configuração de um cron job no servidor, que não foi feita para o teste do sistema. Caso desejem, podem realizar,
 visto que deixei pronto o comando para a execução no schedule.
+<br> 
+A parte da autenticação do sistema foi feita pelo Breeze, um dos starter kits do Laravel que fornecem uma série de benefícios,
+dentre um deles, o de ter um sistema de autenticação pronto para uso.
 
 ## Technologies
 
