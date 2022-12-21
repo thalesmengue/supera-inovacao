@@ -25,7 +25,7 @@
                 <div class="mt-4">
                     <label class="block" for="date">Date<label>
                             <input type="datetime-local" placeholder="date" name="date" id="date"
-                                   value="{{ $maintenance->date->format('Y-m-d\TH:i:s') }}"
+                                   value="{{ $maintenance->date->format('Y-m-d\TH:i') }}"
                                    class="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600">
                             @if($errors->has("date"))
                                 <div class="text-center text-base text-red-600">
